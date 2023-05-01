@@ -27,10 +27,16 @@ public class PronosticosDeportivos1 {
     //En Netbeans, los valores de los argumentos se colocan en File---Project Properties --- Categories: Run ---- Arguments  y van separados por espacios
     public static void main(String[] args) {
         
-        LectorArchivos lectorArchivos = new LectorArchivos();
+        Ronda ronda = new Ronda("1");
+        ronda.leerRonda(args[0]);
         
-        ArrayList<String[]> renglonesParseados = new ArrayList();
-        renglonesParseados = lectorArchivos.leerArchivo( args[1]);
+        Pronosticos pronosticos = new Pronosticos("Mariana");
+        pronosticos.leerPronosticos(args[1]);
+        
+        /*LectorArchivos lectorArchivos = new LectorArchivos();
+        
+        ArrayList<String[]> renglonesParseados;
+        renglonesParseados = lectorArchivos.leerArchivo( args[0]);
         
         for (String[] i : renglonesParseados){
             //System.out.println(i.toString() + "\n");
@@ -38,7 +44,7 @@ public class PronosticosDeportivos1 {
                 System.out.println(j + "\t");
             }
             System.out.println("\n");
-        }
+        } */
         
         /*//Se supone que el orden de los distintos items en cada resultado de partidos y de pronósticos es fijo y no variará nunca.
         

@@ -17,6 +17,7 @@ public class LectorArchivos {
     public LectorArchivos(){        
     }
 
+    //omite primer renglon
     public ArrayList<String[]> leerArchivo(String ruta){
         
         ArrayList<String[]> renglonesParseados = new ArrayList();
@@ -44,11 +45,16 @@ public class LectorArchivos {
             //   System.out.println( renglon + "\n" );
             //   renglon = Datos.readLine();
             //}
+            int nroRenglon = 0;
             while (miLector.hasNextLine()) {
                 renglon = miLector.nextLine();
-                //parsea los campos de un renglon y los guarda
-                renglonesParseados.add(renglon.split(","));
-                //System.out.println(renglon + "\n" );
+                //omite renglon inicial de titulos
+                if (nroRenglon > 0){
+                    //parsea los campos de un renglon y los guarda
+                    renglonesParseados.add(renglon.split(";"));
+                    //System.out.println(renglon + "\n" );
+                }
+                nroRenglon++;
             }
 
             //  Cerramos el archivo.

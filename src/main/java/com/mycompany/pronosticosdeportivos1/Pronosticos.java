@@ -6,26 +6,26 @@ import java.util.ArrayList;
  *
  * @author jul
  */
-public class Ronda {
+public class Pronosticos {
     
-    private String numero;
-    private ArrayList<PartidoJugado> partidos;
+    private String participante;
+    private ArrayList<UnPronostico> pronosticos;
     
-    Ronda (String numero){
-        this.numero = numero;
-        this.partidos = new ArrayList();
+    Pronosticos (String participante){
+        this.participante = participante;
+        this.pronosticos = new ArrayList();
     }
             
     //Se supone que el orden de los distintos items en cada resultado de partidos y de pronósticos es fijo y no variará nunca y que la primera fila son titulos.
-    public void leerRonda(String ruta){
+    public void leerPronosticos(String ruta){
         
         LectorArchivos lectorArchivos = new LectorArchivos();
         
         ArrayList<String[]> renglonesParseados;
         renglonesParseados = lectorArchivos.leerArchivo(ruta);
         
-        Equipo equipo1;
-        Equipo equipo2;
+        //Equipo equipo1;
+        //Equipo equipo2;
         
         for (String[] i : renglonesParseados){
             //System.out.println(i.toString() + "\n");
@@ -39,13 +39,15 @@ public class Ronda {
             System.out.println("i: " + i.toString());
             System.out.println("i[1]: "+i[1]);
             System.out.println("i[2]: "+i[2]);*/
-            equipo1 = new Equipo(i[0], i[1], i[2]);
+            //          equipo1 = new Equipo(i[1], i[2]);
             //System.out.println("i[6]: "+i[6]);
             //System.out.println("i[7]: "+i[7]);
-            equipo2 = new Equipo(i[5], i[6], i[7]);
-            
-            PartidoJugado partidoJugado = new PartidoJugado(equipo1,equipo2,Integer.parseInt(i[3]),Integer.parseInt(i[4]));
-            this.partidos.add(partidoJugado);
+            //         equipo2 = new Equipo(i[6], i[7]);
+//UnPronostico (Equipo equipo1, Equipo equipo2, String gana, String empata, String pierde)
+            UnPronostico unPronostico = new UnPronostico(i[0], i[4], i[1], i[2], i[3]);
+            //PartidoJugado partidoJugado = new PartidoJugado(equipo1,equipo2,Integer.parseInt(i[3]),Integer.parseInt(i[4]));
+            this.pronosticos.add(unPronostico);
+            //this.partidos.add(partidoJugado);
             //System.out.println(this.partidos.toString() + "\n");
         }
         
@@ -55,30 +57,31 @@ public class Ronda {
     //public int puntos()
 
     /**
-     * @return the numero
+     * @return the participante
      */
-    public String getNumero() {
-        return numero;
+    public String getParticipante() {
+        return participante;
     }
 
     /**
-     * @param numero the numero to set
+     * @param participante the participante to set
      */
-    public void setNumero(String numero) {
-        this.numero = numero;
+    public void setParticipante(String participante) {
+        this.participante = participante;
     }
 
     /**
-     * @return the partidos
+     * @return the pronosticos
      */
-    public ArrayList<PartidoJugado> getPartidos() {
-        return partidos;
+    public ArrayList<UnPronostico> getPronosticos() {
+        return pronosticos;
     }
 
     /**
-     * @param partidos the partidos to set
+     * @param pronosticos the pronosticos to set
      */
-    public void setPartidos(ArrayList<PartidoJugado> partidos) {
-        this.partidos = partidos;
+    public void setPronosticos(ArrayList<UnPronostico> pronosticos) {
+        this.pronosticos = pronosticos;
     }
+
 }
