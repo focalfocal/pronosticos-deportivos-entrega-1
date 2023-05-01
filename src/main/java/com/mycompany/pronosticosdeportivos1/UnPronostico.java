@@ -17,13 +17,16 @@ public class UnPronostico {
         this.idCombinadaEquipos = idEquipo1 + "+" + idEquipo2;
         this.idEquipo1 = idEquipo1;
         this.idEquipo2 = idEquipo2;
-        if (gana == "X"){
+        if (gana.equals("X")){
             this.pronosticoEquipo1 = ResultadoEnum.GANADO;
-        } else if (empata == "X"){
+        } else if (empata.equals("X")){
             this.pronosticoEquipo1 = ResultadoEnum.EMPATADO;
         } else {
             this.pronosticoEquipo1 = ResultadoEnum.PERDIDO;
         }
+        /*System.out.println(this.idCombinadaEquipos);
+        System.out.println(gana +" | " + empata + " | " + pierde);
+        System.out.println(this.pronosticoEquipo1);*/
     }
 
     /**

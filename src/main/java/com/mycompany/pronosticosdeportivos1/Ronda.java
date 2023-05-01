@@ -51,8 +51,39 @@ public class Ronda {
         
     }
 
+    //Dado un pronostico, determina cual es el partido jugado en esta ronda cuyos equipos coinciden
+    public PartidoJugado determinarPartJugadoCorrespondiente (UnPronostico unPronostico){
+        String idCombinadaEquiposPronost = unPronostico.getIdCombinadaEquipos();
+        //PartidoJugado partido = new PartidoJugado();
+        
+        for (PartidoJugado partido : this.partidos ){
+            System.out.println(partido.getIdCombinadaEquipos());
+            System.out.println(idCombinadaEquiposPronost);
+            System.out.println("==========");
+            if ( partido.getIdCombinadaEquipos().equals( idCombinadaEquiposPronost)) {
+                return partido;
+            }
+        }
+        
+        System.err.println ("No encontrado partido jugado correspondiente a un pronostico. Error de datos o de programa de procesamiento");
+        System.exit(1);
+        return new PartidoJugado(); //formalidad para cumplir sintaxis de metodo.
+    } 
     
-    //public int puntos()
+    public int evaluarPronosticos (Pronosticos pronosticos){
+        int puntaje = 0;
+        
+        for (UnPronostico unPronostico : pronosticos.getPronosticos()){
+            //determina cual es el partido jugado correspondiente a este pronostico de un partido
+            PartidoJugado partidoJugadoCorresp = this.determinarPartJugadoCorrespondiente(unPronostico); 
+            //determina puntaje correspondiente a este pronostico
+            System.out.println("puntos un partido: " + partidoJugadoCorresp.evalPronUnPartido(unPronostico));
+            puntaje += partidoJugadoCorresp.evalPronUnPartido(unPronostico);
+        }
+        return puntaje;
+    }
+    
+    //public int puntos() //sugerido
 
     /**
      * @return the numero

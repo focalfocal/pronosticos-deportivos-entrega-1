@@ -15,6 +15,7 @@ public class PartidoJugado {
     private ResultadoEnum resultadoEquipo1;
     private ResultadoEnum resultadoEquipo2;
 
+    PartidoJugado(){}
     
     PartidoJugado(Equipo equipo1, Equipo equipo2, int golesEquipo1, int golesEquipo2){
         this.idCombinadaEquipos = equipo1.getId() + "+" + equipo2.getId();
@@ -24,15 +25,20 @@ public class PartidoJugado {
         this.golesEquipo2 = golesEquipo2;
         
         if( golesEquipo1 == golesEquipo2 ){
-            resultadoEquipo1= ResultadoEnum.EMPATADO;
-            resultadoEquipo2= ResultadoEnum.EMPATADO;
+            this.resultadoEquipo1= ResultadoEnum.EMPATADO;
+            this.resultadoEquipo2= ResultadoEnum.EMPATADO;
             } else if  (golesEquipo1 > golesEquipo2){
-                resultadoEquipo1= ResultadoEnum.GANADO;
-                resultadoEquipo2= ResultadoEnum.PERDIDO;
+                this.resultadoEquipo1= ResultadoEnum.GANADO;
+                this.resultadoEquipo2= ResultadoEnum.PERDIDO;
             } else{  
-                resultadoEquipo1= ResultadoEnum.PERDIDO;
-                resultadoEquipo1= ResultadoEnum.GANADO;
+                this.resultadoEquipo1= ResultadoEnum.PERDIDO;
+                this.resultadoEquipo2= ResultadoEnum.GANADO;
             }
+        //System.out.println(this.idCombinadaEquipos);
+        //System.out.println(golesEquipo1);
+        //System.out.println(golesEquipo2);
+        //System.out.println(this.resultadoEquipo1);
+        //System.out.println(this.resultadoEquipo2);
         }
     
     public ResultadoEnum resultado(Equipo equipo){
@@ -44,6 +50,13 @@ public class PartidoJugado {
     }
     //alternativa: método al que pasándole un equipo y un resultado de este partido, responda verdadero o falso.
 
+    //Determina la cantidad de puntos que corresponden comparando un partido jugado con un pronostico.
+    public int evalPronUnPartido (UnPronostico unPronostico){
+        System.out.println(this.getResultadoEquipo1());
+        System.out.println(unPronostico.getPronosticoEquipo1());
+        return (this.getResultadoEquipo1() == unPronostico.getPronosticoEquipo1()) ? 1 : 0;
+    }
+    
     /**
      * @return the idCombinadaEquipos
      */

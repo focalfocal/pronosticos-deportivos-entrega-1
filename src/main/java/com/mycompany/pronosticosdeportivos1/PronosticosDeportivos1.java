@@ -15,6 +15,9 @@ import java.util.ArrayList; */
  * Pronosticos Deportivos - Entrega 1
  * @author dd
  * Java 11 (LTS)
+ * Suposiciones:
+ * ###Completar
+ * - Se supone que el orden en que se indican los dos equipos en un partido es el mismo tanto para los resultados de ese partido como para el pronóstico (condición local-visitante). 
  */
 public class PronosticosDeportivos1 {
     
@@ -29,10 +32,17 @@ public class PronosticosDeportivos1 {
         
         Ronda ronda = new Ronda("1");
         ronda.leerRonda(args[0]);
+        //##seria mejor pasar la ruta al constructor de Ronda
         
         Pronosticos pronosticos = new Pronosticos("Mariana");
         pronosticos.leerPronosticos(args[1]);
+        //##seria mejor pasar la ruta al constructor de Pronosticos
         
+        //Determina el puntaje correspondiente a esta ronda y estos pronosticos de una ronda
+        int puntos = ronda.evaluarPronosticos (pronosticos);
+        
+        System.out.println("Participante: " + pronosticos.getParticipante());
+        System.out.println("Puntos: " + puntos);
         /*LectorArchivos lectorArchivos = new LectorArchivos();
         
         ArrayList<String[]> renglonesParseados;
