@@ -7,7 +7,7 @@ import com.mycompany.pronosticosdeportivos1.PronosticosDeportivos1.ResultadoEnum
  * @author jul
  */
 public class PartidoJugado {
-    private String idCombinadaEquipos; //Para identificar los partidos de forma unívoca para su correcto procesamiento
+    private String idCombinadaEquipos; //Para identificar los partidos de forma unívoca para su correcto procesamiento, y matchearlos con los pronósticos
     private Equipo equipo1;
     private Equipo equipo2;
     private int golesEquipo1;
@@ -15,7 +15,7 @@ public class PartidoJugado {
     private ResultadoEnum resultadoEquipo1;
     private ResultadoEnum resultadoEquipo2;
 
-    PartidoJugado(){}
+    PartidoJugado(){} //usado para cumplir facilmente una necesidad de sintaxis obligatoria en otra parte del código. Sin otro uso.
     
     PartidoJugado(Equipo equipo1, Equipo equipo2, int golesEquipo1, int golesEquipo2){
         this.idCombinadaEquipos = equipo1.getId() + "+" + equipo2.getId();
@@ -34,11 +34,7 @@ public class PartidoJugado {
                 this.resultadoEquipo1= ResultadoEnum.PERDIDO;
                 this.resultadoEquipo2= ResultadoEnum.GANADO;
             }
-        //System.out.println(this.idCombinadaEquipos);
-        //System.out.println(golesEquipo1);
-        //System.out.println(golesEquipo2);
-        //System.out.println(this.resultadoEquipo1);
-        //System.out.println(this.resultadoEquipo2);
+
         }
     
     public ResultadoEnum resultado(Equipo equipo){
@@ -48,12 +44,10 @@ public class PartidoJugado {
             return resultadoEquipo2;
         }
     }
-    //alternativa: método al que pasándole un equipo y un resultado de este partido, responda verdadero o falso.
 
     //Determina la cantidad de puntos que corresponden comparando un partido jugado con un pronostico.
     public int evalPronUnPartido (UnPronostico unPronostico){
-        System.out.println(this.getResultadoEquipo1());
-        System.out.println(unPronostico.getPronosticoEquipo1());
+
         return (this.getResultadoEquipo1() == unPronostico.getPronosticoEquipo1()) ? 1 : 0;
     }
     

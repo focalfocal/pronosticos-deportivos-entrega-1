@@ -30,38 +30,25 @@ public class Ronda {
         Equipo equipo2;
         
         for (String[] i : renglonesParseados){
-            //System.out.println(i.toString() + "\n");
-            for (String j : i){
-                System.out.print(j + "||");       
-            }
-            System.out.println("-------");
+            //Nota para etapa 2: los equipos se crean solo en ronda 1. En rondas siguientes, se obtienen y buscan los existentes para crear el partido.
             
-            //para etapa 2: los equipos se crean solo en ronda 1. En rondas siguientes, se obtienen y busccan los existentes para crear el partido.
-            /*System.out.println("i: " + i);
-            System.out.println("i: " + i.toString());
-            System.out.println("i[1]: "+i[1]);
-            System.out.println("i[2]: "+i[2]);*/
             equipo1 = new Equipo(i[0], i[1], i[2]);
-            //System.out.println("i[6]: "+i[6]);
-            //System.out.println("i[7]: "+i[7]);
             equipo2 = new Equipo(i[5], i[6], i[7]);
             
             PartidoJugado partidoJugado = new PartidoJugado(equipo1,equipo2,Integer.parseInt(i[3]),Integer.parseInt(i[4]));
+            
             this.partidos.add(partidoJugado);
-            //System.out.println(this.partidos.toString() + "\n");
         }
         
     }
 
     //Dado un pronostico, determina cual es el partido jugado en esta ronda cuyos equipos coinciden
     public PartidoJugado determinarPartJugadoCorrespondiente (UnPronostico unPronostico){
+        
         String idCombinadaEquiposPronost = unPronostico.getIdCombinadaEquipos();
-        //PartidoJugado partido = new PartidoJugado();
         
         for (PartidoJugado partido : this.partidos ){
-            System.out.println(partido.getIdCombinadaEquipos());
-            System.out.println(idCombinadaEquiposPronost);
-            System.out.println("==========");
+ 
             if ( partido.getIdCombinadaEquipos().equals( idCombinadaEquiposPronost)) {
                 return partido;
             }
@@ -76,17 +63,18 @@ public class Ronda {
         int puntaje = 0;
         
         for (UnPronostico unPronostico : pronosticos.getPronosticos()){
+            
             //determina cual es el partido jugado correspondiente a este pronostico de un partido
             PartidoJugado partidoJugadoCorresp = this.determinarPartJugadoCorrespondiente(unPronostico); 
+            
             //determina puntaje correspondiente a este pronostico
-            System.out.println("puntos un partido: " + partidoJugadoCorresp.evalPronUnPartido(unPronostico));
+            //System.out.println("puntos un partido: " + partidoJugadoCorresp.evalPronUnPartido(unPronostico));
+            
             puntaje += partidoJugadoCorresp.evalPronUnPartido(unPronostico);
         }
         return puntaje;
     }
     
-    //public int puntos() //sugerido
-
     /**
      * @return the numero
      */

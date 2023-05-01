@@ -1,4 +1,3 @@
-
 package com.mycompany.pronosticosdeportivos1;
 
 /**
@@ -57,8 +56,4 @@ public class Equipo {
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
-
-    
-    
-    
 }

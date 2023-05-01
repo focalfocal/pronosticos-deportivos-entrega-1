@@ -25,38 +25,19 @@ public class Pronosticos {
         
         ArrayList<String[]> renglonesParseados;
         renglonesParseados = lectorArchivos.leerArchivo(ruta);
-        
-        //Equipo equipo1;
-        //Equipo equipo2;
-        
+
         for (String[] i : renglonesParseados){
-            //System.out.println(i.toString() + "\n");
-            for (String j : i){
-                System.out.print(j + "||");       
-            }
-            System.out.println("-------");
             
-            //para etapa 2: los equipos se crean solo en ronda 1. En rondas siguientes, se obtienen y busccan los existentes para crear el partido.
-            /*System.out.println("i: " + i);
-            System.out.println("i: " + i.toString());
-            System.out.println("i[1]: "+i[1]);
-            System.out.println("i[2]: "+i[2]);*/
-            //          equipo1 = new Equipo(i[1], i[2]);
-            //System.out.println("i[6]: "+i[6]);
-            //System.out.println("i[7]: "+i[7]);
-            //         equipo2 = new Equipo(i[6], i[7]);
-//UnPronostico (Equipo equipo1, Equipo equipo2, String gana, String empata, String pierde)
+            //para etapa 2: los equipos se crean solo en ronda 1. En rondas siguientes, se obtienen y buscan los existentes para crear el partido.
+
             UnPronostico unPronostico = new UnPronostico(i[0], i[4], i[1], i[2], i[3]);
-            //PartidoJugado partidoJugado = new PartidoJugado(equipo1,equipo2,Integer.parseInt(i[3]),Integer.parseInt(i[4]));
+
             this.pronosticos.add(unPronostico);
-            //this.partidos.add(partidoJugado);
-            //System.out.println(this.partidos.toString() + "\n");
         }
         
     }
 
     
-    //public int puntos()
 
     /**
      * @return the participante
