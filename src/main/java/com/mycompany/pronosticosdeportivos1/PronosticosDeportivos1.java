@@ -16,8 +16,8 @@ import java.util.ArrayList; */
  * @author dd
  * Java 11 (LTS)
  * Suposiciones:
- * ###Completar
  * - Se supone que el orden en que se indican los dos equipos en un partido es el mismo tanto para los resultados de ese partido como para el pronóstico (condición local-visitante). 
+ * - En la siguiente etapa tendré en cuenta una cantidad fija de partidos por ronda. En esta etapa supongo que cada archivo completo corresponde a una ronda.
  */
 public class PronosticosDeportivos1 {
     
@@ -30,12 +30,14 @@ public class PronosticosDeportivos1 {
     //En Netbeans, los valores de los argumentos se colocan en File---Project Properties --- Categories: Run ---- Arguments  y van separados por espacios
     public static void main(String[] args) {
         
-        Ronda ronda = new Ronda("1");
-        ronda.leerRonda(args[0]);
+        //Crea objeto ronda con todos los partidos jugados, leidos de archivo
+        Ronda ronda = new Ronda("1", args[0]);
+        //ronda.leerRonda(args[0]);
         //##seria mejor pasar la ruta al constructor de Ronda
         
-        Pronosticos pronosticos = new Pronosticos("Mariana");
-        pronosticos.leerPronosticos(args[1]);
+        //Crea objeto pronosticos con todos los ponosticos, leidos de archivo
+        Pronosticos pronosticos = new Pronosticos("Mariana", args[1]);
+        //pronosticos.leerPronosticos(args[1]);
         //##seria mejor pasar la ruta al constructor de Pronosticos
         
         //Determina el puntaje correspondiente a esta ronda y estos pronosticos de una ronda

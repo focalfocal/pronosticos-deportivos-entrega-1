@@ -11,9 +11,11 @@ public class Ronda {
     private String numero;
     private ArrayList<PartidoJugado> partidos;
     
-    Ronda (String numero){
+    Ronda (String numero, String ruta){
         this.numero = numero;
         this.partidos = new ArrayList();
+        //lee contenido del archivo hacia this.partidos
+        this.leerRonda(ruta);
     }
             
     //Se supone que el orden de los distintos items en cada resultado de partidos y de pronósticos es fijo y no variará nunca y que la primera fila son titulos.

@@ -11,9 +11,11 @@ public class Pronosticos {
     private String participante;
     private ArrayList<UnPronostico> pronosticos;
     
-    Pronosticos (String participante){
+    Pronosticos (String participante, String ruta){
         this.participante = participante;
         this.pronosticos = new ArrayList();
+        //lee contenido del archivo hacia this.pronosticos
+        this.leerPronosticos(ruta);
     }
             
     //Se supone que el orden de los distintos items en cada resultado de partidos y de pronósticos es fijo y no variará nunca y que la primera fila son titulos.
