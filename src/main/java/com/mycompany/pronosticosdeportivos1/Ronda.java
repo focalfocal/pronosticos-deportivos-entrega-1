@@ -68,7 +68,7 @@ public class Ronda {
             PartidoJugado partidoJugadoCorresp = this.determinarPartJugadoCorrespondiente(unPronostico); 
             
             //determina puntaje correspondiente a este pronostico
-            //System.out.println("puntos un partido: " + partidoJugadoCorresp.evalPronUnPartido(unPronostico));
+            //System.out.println("puntos un partido: " + partidoJugadoCorresp.evalPronUnPartido(unPronostico)); 
             
             puntaje += partidoJugadoCorresp.evalPronUnPartido(unPronostico);
         }
